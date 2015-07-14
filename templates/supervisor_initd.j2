@@ -30,7 +30,7 @@ DESC=supervisor
 
 test -x $DAEMON || exit 0
 
-LOGDIR=/var/log/supervisor
+LOGDIR={{ supervisor_supervisord_log_path }}
 PIDFILE=/var/run/$NAME.pid
 DODTIME=5                   # Time to wait for the server to die, in seconds
                             # If this value is set too low you might not
@@ -41,7 +41,7 @@ DODTIME=5                   # Time to wait for the server to die, in seconds
 if [ -f /etc/default/supervisor ] ; then
 	. /etc/default/supervisor
 fi
-DAEMON_OPTS="-c /etc/supervisor/supervisord.conf $DAEMON_OPTS"
+DAEMON_OPTS="-c /etc/supervisord.conf $DAEMON_OPTSb"
 
 set -e
 
@@ -103,7 +103,7 @@ case "$1" in
 	;;
   stop)
 	echo -n "Stopping $DESC: "
-	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE 
+	start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
 	echo "$NAME."
 	;;
   force-stop)

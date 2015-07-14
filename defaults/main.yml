@@ -1,6 +1,6 @@
 ---
 supervisor_version: 3.1.3
-supervisor_supervisord_log_path: /var/log/supervisor
+supervisor_supervisord_log_path: /var/log/supervisor/supervisord.log
 supervisor_initscript_path: /etc/init.d/supervisor
 supervisor_owner: root
 supervisor_group: root
@@ -28,7 +28,7 @@ supervisor_unix_http_server:
 
 supervisor_supervisord:
   ## (main log file;default $CWD/supervisord.log)
-  logfile: "{{ supervisor_supervisord_log_path }}/supervisord.log"
+  logfile: "{{ supervisor_supervisord_log_path }}"
   ## (max main logfile bytes b4 rotation;default 50MB)
   logfile_maxbytes: 50mb
   ## (num of main logfile rotation backups;default 10)
