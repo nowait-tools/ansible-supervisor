@@ -27,14 +27,16 @@ supervisor_supervisord_log_path: /var/log/supervisor/supervisord.log
 supervisor_supervisord:
   ## (main log file;default $CWD/supervisord.log)
   logfile: "{{ supervisor_supervisord_log_path }}"
-  ## (max main logfile bytes b4 rotation;default 50MB)
-  logfile_maxbytes: 50mb
-  ## (num of main logfile rotation backups;default 10)
-  logfile_backups: 10
-  ## (log level;default info; others: debug,warn,trace)
-  loglevel: info
   ## (supervisord pidfile;default supervisord.pid)
-  # pidfile: /tmp/supervisord.pid
+  pidfile: /var/run/supervisord.pid
+  ## ('AUTO' child log dir, default $TEMP)
+  childlogdir: /var/log/supervisor
+  ## (max main logfile bytes b4 rotation;default 50MB)
+  # logfile_maxbytes: 50mb
+  ## (num of main logfile rotation backups;default 10)
+  # logfile_backups: 10
+  ## (log level;default info; others: debug,warn,trace)
+  # loglevel: info
   ## (start in foreground if true;default false)
   # nodaemon: false
   ## (min. avail startup file descriptors;default 1024)
@@ -51,8 +53,6 @@ supervisor_supervisord:
   # directory: /tmp
   ## (don't clean up tempfiles at start;default false)
   # nocleanup: true
-  ## ('AUTO' child log dir, default $TEMP)
-  # childlogdir: /tmp
   ## (key value pairs to add to environment)
   # environment: KEY="value"
   ## (strip ansi escape codes in logs; def. false)
