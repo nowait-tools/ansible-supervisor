@@ -42,7 +42,6 @@ supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 {% endfor %}
 {% endif %}
 
-
 {% if supervisor_programs is defined %}
 {% for item in supervisor_programs %}
 {% for (key, value) in item.iteritems() %}

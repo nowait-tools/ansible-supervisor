@@ -1,0 +1,30 @@
+---
+- name: Install supervisor via apt
+  apt:
+    package: "{{ item }}"
+    state: present
+  with_items:
+    - supervisor
+
+- name: Install the supervisor configuration file
+  template:
+    src: supervisord.conf.j2
+    dest: /etc/supervisor/supervisord.conf
+    owner: "{{ supervisor_owner }}"
+    group: "{{ supervisor_group }}"
+  notify: restart supervisor
+
+- name: Install the supervisor init script
+  template:
+    src: supervisor_initd.j2
+    dest: /etc/init.d/supervisor
+    mode: 0755
+    owner: "{{ supervisor_owner }}"
+    group: "{{ supervisor_group }}"
+  notify: restart supervisor
+
+- name: Ensure the supervisor service is running
+  service:
+    name: supervisor
+    state: started
+    enabled: yes
