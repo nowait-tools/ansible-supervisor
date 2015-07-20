@@ -1,7 +1,6 @@
 ---
 supervisor_owner: root
 supervisor_group: root
-supervisor_supervisord_log_path: /var/log/supervisor/supervisord.log
 
 # supervisor_unix_http_server:
   ## (the path to the socket file)
@@ -26,7 +25,7 @@ supervisor_supervisord_log_path: /var/log/supervisor/supervisord.log
 
 supervisor_supervisord:
   ## (main log file;default $CWD/supervisord.log)
-  logfile: "{{ supervisor_supervisord_log_path }}"
+  logfile: /var/log/supervisor/supervisord.log
   ## (supervisord pidfile;default supervisord.pid)
   pidfile: /var/run/supervisord.pid
   ## ('AUTO' child log dir, default $TEMP)
