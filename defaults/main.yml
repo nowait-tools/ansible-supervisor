@@ -2,9 +2,9 @@
 supervisor_owner: root
 supervisor_group: root
 
-# supervisor_unix_http_server:
+supervisor_unix_http_server:
   ## (the path to the socket file)
-  # file: /tmp/supervisor.sock
+  file: /tmp/supervisor.sock
   ## socket file mode (default 0700)
   # chmod: 0700
   ## socket file uid:gid owner
